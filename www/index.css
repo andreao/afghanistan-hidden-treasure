@@ -1,0 +1,94 @@
+/* TODO: Font licensing? */
+/* TODO: fonts produce a warning in Chrome about MIME-type */
+@font-face { 
+    font-family: Typewriter;
+    src: url('gfx/fonts/traveling_typewriter/Traveling_Typewriter.otf');
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: Typewriter;
+    color: #2A2A2A;
+    position: absolute;
+}
+
+* {
+    position: inherit;
+    font-family: inherit;
+    /* this doesn't work on device, as it disables typing in text boxes */
+    /*-webkit-touch-callout: none;
+    -webkit-user-select: none;*/
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 300%;
+    text-decoration: underline;
+    /* TODO: must indicate a touchdown */
+}
+
+.travel:disabled {
+    background-color: grey;
+    opacity: 0.5;
+}
+
+/* TODO: need a way to adjust text size to fill its container */
+/* TODO: need a way to vertically align the text */
+label.quiz {
+    font-size: 300%;
+}
+
+button.quiz {
+    font-size: 200%;
+}
+
+
+
+
+/* Animating the keys */
+@-webkit-keyframes WIGGLE_KEY_RIGHT {
+    0% { none; }
+    20% { -webkit-transform: rotate(-30deg); }
+    50% { -webkit-transform: rotate(20deg); }
+    80% { -webkit-transform: rotate(-10deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+@-webkit-keyframes WIGGLE_KEY_LEFT {
+    0% { none; }
+    20% { -webkit-transform: rotate(30deg); }
+    50% { -webkit-transform: rotate(-20deg); }
+    80% { -webkit-transform: rotate(10deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+
+@-webkit-keyframes PULSE {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.2); }
+    100% { -webkit-transform: scale(1); }
+}
+
+@-webkit-keyframes FLIGHT {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@-webkit-keyframes DUST_MOVE {
+    0% { opacity: 0; -webkit-transform: translate(0,0); }
+    50% { opacity: 0.5; -webkit-transform: translate(50,50); }
+    100% { opacity: 0; -webkit-transform: translate(100,100); }
+}
+
+
+
+.credits {
+    position: relative;
+}
+.credits h1 {
+    font-size: 17px;
+}
