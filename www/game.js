@@ -2594,6 +2594,6 @@ document.addEventListener("deviceready", function() {
 
 $(function() {
     var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-    if (!is_chrome) return;
+    if (!is_chrome) console.log("Warning, not chrome, might not work");
     game.begin($("#container"));
 });
