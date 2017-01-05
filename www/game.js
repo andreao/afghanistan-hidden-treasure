@@ -2178,26 +2178,30 @@ var Game = function() {
     this.ratio = $(window).height() / $(window).width();
     this.width = 320;
     this.height = 480; //this.width * this.ratio;
-    this.scale = 1;
+    this.scale = {"x": 1, "y": 1};
 }
 /* zooms the view to fit the screen, used to support different resolutions */
 Game.prototype.zoomScreen = function() {
     var scaleX = window.innerWidth / this.width;
     var scaleY = window.innerHeight / this.height;
-    this.scale = Math.max(scaleX, scaleY);
-    $("body").css("zoom", this.scale);
+    if (scaleX > 1.2*scaleY) scaleX = scaleY; // if screen is too wide, give up and preserve aspect instead
+    this.zoom(scaleX, scaleY);
+}
+Game.prototype.zoom = function(scaleX, scaleY) {
+    this.scale = {"x": scaleX, "y": scaleY};
+    $("body").css("transform", "scale("+scaleX+","+scaleY+")");
 }
 Game.prototype.eventPos = function(event) {
     var touches = event.changedTouches;
     if (touches)
 	return {
-	    x: touches[0].pageX / game.scale,
-	    y: touches[0].pageY / game.scale,
+	    x: touches[0].pageX / game.scale.x,
+	    y: touches[0].pageY / game.scale.y,
 	};
     else 
 	return {
-	    x: event.pageX/game.scale,
-	    y: event.pageY/game.scale,
+	    x: event.pageX/game.scale.x,
+	    y: event.pageY/game.scale.y,
 	};
 }
 
